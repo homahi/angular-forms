@@ -1,17 +1,26 @@
 <div class="container">
   <h1>社員登録</h1>
+  <div>{{model | json}}</div>
   <form>
     <div>
       <label for="">名前</label>
-      <div><input type="text" placeholder="名前" id="name" required></div>
+      <div><input type="text" placeholder="名前" id="name" required [(ngModel)]="model.name" [(ngModel)]="model.name" name="name" minlength="4" #name="ngModel"></div>
     </div>
     <div>
       <label for="">部署</label>
       <div>
-        <select id="department" placeholder="部署" required>
+        <select name="department" id="department" placeholder="部署" required [(ngModel)]="model.department">
           <option *ngFor="let department of departments" [value]="department">{{department}}</option>
         </select>
       </div>
+    </div>
+    <div class="full-width">
+      <label >電話番号</label>
+      <div><input type="text" placeholder="電話番号" id="phone" name="phone" required [(ngModel)]="model.phone"></div>
+    </div>
+    <div class="full-width">
+      <label >メールアドレス</label>
+      <div><input type="text" placeholder="メールアドレス" id="email" name="email" required [(ngModel)]="model.email"></div>
     </div>
     <button type="submit">Submit</button>
   </form>

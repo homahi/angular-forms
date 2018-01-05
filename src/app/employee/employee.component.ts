@@ -7,10 +7,10 @@ import { EmployeeModel } from '../employee-model';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
-  public department: string[] = [
+  public departments: string[] = [
     'Designer', 'Develop', 'Marketing'
   ];
-  public model: EmployeeModel = new EmployeeModel(12, 'Angular', '060-1234-5678', this.department[1]);
+  public model: EmployeeModel = new EmployeeModel(12, 'Angular', '060-1234-5678', this.departments[1]);
   public submitted = false;
 
   onSubmit() {
