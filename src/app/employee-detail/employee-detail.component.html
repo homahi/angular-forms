@@ -1,3 +1,22 @@
 <h2>社員詳細</h2>
-<h3><i>FormControl</i></h3>
-<input class="form-control" [formControl]="name">
+<form [formGroup]="employeeForm" novalidate>
+  <div class="form-group">
+    <div class="full-width">
+      <label for="">名前</label>
+      <input type="text" placeholder="名前" name="name" formControlName="name">
+    </div>
+    <div class="full-width">
+      <label for="">電話番号</label>
+      <input type="text" placeholder="電話番号" name="phone" formControlName="phone">
+    </div>
+    <div class="full-width">
+      <label for="">部署</label>
+      <select id="department" name="department" formControlName="department">
+      <option [value]="department" *ngFor="let department of departments">{{department}}</option></select>
+    </div>
+    <div class="full-width"><label for="">メールアドレス</label>
+    <input type="text" placeholder="メールアドレス" name="email" formControlName="email"></div>
+  </div>
+</form>
+<p>Form value: {{employeeForm.value | json}}</p>
+<p>Form value: {{employeeForm.status | json}}</p>

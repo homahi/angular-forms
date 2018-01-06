@@ -1,5 +1,6 @@
+import { departments } from '../employee-model';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   moduleId: module.id,
@@ -8,11 +9,23 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./employee-detail.component.css']
 })
 export class EmployeeDetailComponent implements OnInit {
-  name = new FormControl();
+  employeeForm: FormGroup;
+  departments = departments;
 
-  constructor() { }
+  constructor(public fb: FormBuilder) {
+    this.createForm();
+  }
 
   ngOnInit() {
   }
 
+  createForm() {
+    this.employeeForm = this.fb.group({
+      id: '',
+      phone: ['', Validators.required],
+      department: [this.departments[0], Validators.required],
+      name: ['', Validators.required],
+      email: ''
+    });
+  }
 }
