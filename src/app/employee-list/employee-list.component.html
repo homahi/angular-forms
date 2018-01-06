@@ -1,0 +1,14 @@
+<h3 *ngIf="isLoading"><i>Loading ...</i></h3>
+<h3 *ngIf="!isLoading">社員を選んでください</h3>
+
+<nav><button (click)="getEmployee()">再読込</button>
+  <dl>
+    <li *ngFor="let employee of employees | async" (click)="select(employee)">{{employee.name}}</li>
+  </dl>
+</nav>
+<div *ngIf="selectedEmployee">
+  <hr>
+  <h2>社員詳細</h2>
+  <h3>編集: {{selectedEmployee.name}}</h3>
+  <app-employee-detail [employee]="selectedEmployee"></app-employee-detail>
+</div>
