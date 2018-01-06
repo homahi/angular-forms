@@ -2,11 +2,12 @@
   <h1>社員登録</h1>
   <div>{{model | json}}</div>
   <form>
-    <div>
+    <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger"><span class="warn" [hidden]="!name.errors.required">必須項目です</span></div>
+    <div class="full-width">
       <label for="">名前</label>
-      <div><input type="text" placeholder="名前" id="name" required [(ngModel)]="model.name" [(ngModel)]="model.name" name="name" minlength="4" #name="ngModel"></div>
+      <input type="text" placeholder="名前" id="name" required [(ngModel)]="model.name" [(ngModel)]="model.name" name="name" minlength="4" #name="ngModel"><br>
     </div>
-    <div>
+    <div class="full-width">
       <label for="">部署</label>
       <div>
         <select name="department" id="department" placeholder="部署" required [(ngModel)]="model.department">
@@ -15,11 +16,11 @@
       </div>
     </div>
     <div class="full-width">
-      <label >電話番号</label>
+      <label>電話番号</label>
       <div><input type="text" placeholder="電話番号" id="phone" name="phone" required [(ngModel)]="model.phone"></div>
     </div>
     <div class="full-width">
-      <label >メールアドレス</label>
+      <label>メールアドレス</label>
       <div><input type="text" placeholder="メールアドレス" id="email" name="email" required [(ngModel)]="model.email"></div>
     </div>
     <button type="submit">Submit</button>
